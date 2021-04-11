@@ -18,8 +18,9 @@ class _MyHomePageState extends State<MyHomePage> {
     fontFamily: 'Cabin Sketch Bold',
     letterSpacing: 3,
   );
+
   var myRegularTextStyle = TextStyle(
-    fontSize: 35.0,
+    fontSize: 15.0,
     fontWeight: FontWeight.bold,
     color: Colors.black,
     decoration: TextDecoration.none,
@@ -63,19 +64,20 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Center(
             child: Padding(
-          padding: const EdgeInsets.only(top: 18.0),
+          padding: const EdgeInsets.only(top: 40.0, bottom: 10.0),
           child: Text(
             "WICKTIONARY",
             style: myBoldTextStyle,
           ),
         )),
         bottom: PreferredSize(
-          preferredSize: Size.fromHeight(80.0),
+          preferredSize: Size.fromHeight(100.0),
           child: Row(
             children: <Widget>[
               Expanded(
                 child: Container(
-                  margin: const EdgeInsets.only(left: 12.0, bottom: 8.0),
+                  margin: const EdgeInsets.only(
+                      left: 12.0, bottom: 20.0, top: 22.0),
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(24.0),
@@ -89,10 +91,11 @@ class _MyHomePageState extends State<MyHomePage> {
                     },
                     controller: _controller,
                     decoration: InputDecoration(
-                      hintText: "Search for a word",
-                      contentPadding: const EdgeInsets.only(left: 24.0),
-                      border: InputBorder.none,
-                    ),
+                        hintText: "Search a word",
+                        contentPadding: const EdgeInsets.only(left: 24.0),
+                        border: InputBorder.none,
+                        hintStyle:
+                            myRegularTextStyle.copyWith(color: Colors.grey)),
                   ),
                 ),
               ),
@@ -118,9 +121,7 @@ class _MyHomePageState extends State<MyHomePage> {
               return Center(
                 child: Text(
                   "Type something in search bar 😇",
-                  style: myRegularTextStyle.copyWith(
-                    fontSize: 20.0,
-                  ),
+                  style: myRegularTextStyle.copyWith(fontSize: 20.0),
                 ),
               );
             }
