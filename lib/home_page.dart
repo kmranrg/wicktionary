@@ -125,44 +125,60 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               );
             }
+            print("Hi Error");
 
-            if (snapshot.data == "waiting") {
-              return Center(
-                child: CircularProgressIndicator(),
+            print(snapshot.data);
+
+            try {
+              if (snapshot.data[0]["message"] == "No definition :(") {
+                return Center(
+                  child: Text(
+                    "No definition found 🥺",
+                    style: myRegularTextStyle.copyWith(
+                      fontSize: 20.0,
+                    ),
+                  ),
+                );
+              }
+            } catch (e) {
+              if (snapshot.data == "waiting") {
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
+
+              return ListView.builder(
+                itemCount: snapshot.data["definitions"].length,
+                itemBuilder: (BuildContext context, int index) {
+                  return ListBody(
+                    children: <Widget>[
+                      Container(
+                        color: Colors.teal[50],
+                        child: ListTile(
+                          leading: snapshot.data["definitions"][index]
+                                      ["image_url"] ==
+                                  null
+                              ? null
+                              : CircleAvatar(
+                                  backgroundImage: NetworkImage(snapshot
+                                      .data["definitions"][index]["image_url"]),
+                                ),
+                          title: Text(_controller.text.trim() +
+                              "(" +
+                              snapshot.data["definitions"][index]["type"] +
+                              ")"),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                            snapshot.data["definitions"][index]["definition"]),
+                      )
+                    ],
+                  );
+                },
               );
             }
-
-            return ListView.builder(
-              itemCount: snapshot.data["definitions"].length,
-              itemBuilder: (BuildContext context, int index) {
-                return ListBody(
-                  children: <Widget>[
-                    Container(
-                      color: Colors.teal[50],
-                      child: ListTile(
-                        leading: snapshot.data["definitions"][index]
-                                    ["image_url"] ==
-                                null
-                            ? null
-                            : CircleAvatar(
-                                backgroundImage: NetworkImage(snapshot
-                                    .data["definitions"][index]["image_url"]),
-                              ),
-                        title: Text(_controller.text.trim() +
-                            "(" +
-                            snapshot.data["definitions"][index]["type"] +
-                            ")"),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(
-                          snapshot.data["definitions"][index]["definition"]),
-                    )
-                  ],
-                );
-              },
-            );
           },
         ),
       ),
