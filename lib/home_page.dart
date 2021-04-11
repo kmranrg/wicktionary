@@ -10,12 +10,21 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
-  var myTitleTextStyle = TextStyle(
-    fontSize: 28.0,
+  var myBoldTextStyle = TextStyle(
+    fontSize: 35.0,
     fontWeight: FontWeight.bold,
     color: Colors.white,
     decoration: TextDecoration.none,
+    fontFamily: 'Cabin Sketch Bold',
+    letterSpacing: 3,
+  );
+  var myRegularTextStyle = TextStyle(
+    fontSize: 35.0,
+    fontWeight: FontWeight.bold,
+    color: Colors.black,
+    decoration: TextDecoration.none,
+    fontFamily: 'Cabin Sketch Regular',
+    letterSpacing: 3,
   );
 
   String _url = "https://owlbot.info/api/v4/dictionary/";
@@ -52,9 +61,13 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Center(child: Padding(
+        title: Center(
+            child: Padding(
           padding: const EdgeInsets.only(top: 18.0),
-          child: Text("WICKTIONARY",style: myTitleTextStyle,),
+          child: Text(
+            "WICKTIONARY",
+            style: myBoldTextStyle,
+          ),
         )),
         bottom: PreferredSize(
           preferredSize: Size.fromHeight(80.0),
@@ -103,7 +116,12 @@ class _MyHomePageState extends State<MyHomePage> {
           builder: (BuildContext ctx, AsyncSnapshot snapshot) {
             if (snapshot.data == null) {
               return Center(
-                child: Text("Enter a search word"),
+                child: Text(
+                  "Type something in search bar 😇",
+                  style: myRegularTextStyle.copyWith(
+                    fontSize: 20.0,
+                  ),
+                ),
               );
             }
 
@@ -119,16 +137,16 @@ class _MyHomePageState extends State<MyHomePage> {
                 return ListBody(
                   children: <Widget>[
                     Container(
-                      color: Colors.grey[300],
+                      color: Colors.teal[50],
                       child: ListTile(
                         leading: snapshot.data["definitions"][index]
-                        ["image_url"] ==
-                            null
+                                    ["image_url"] ==
+                                null
                             ? null
                             : CircleAvatar(
-                          backgroundImage: NetworkImage(snapshot
-                              .data["definitions"][index]["image_url"]),
-                        ),
+                                backgroundImage: NetworkImage(snapshot
+                                    .data["definitions"][index]["image_url"]),
+                              ),
                         title: Text(_controller.text.trim() +
                             "(" +
                             snapshot.data["definitions"][index]["type"] +

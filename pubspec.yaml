@@ -73,5 +73,15 @@ flutter:
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
   #
+  fonts:
+    - family: Cabin Sketch Bold
+      fonts:
+        - asset: asset/fonts/CabinSketch-Bold.ttf
+          weight: 700
+    - family: Cabin Sketch Regular
+      fonts:
+        - asset: asset/fonts/CabinSketch-Regular.ttf
+          weight: 400
+
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
