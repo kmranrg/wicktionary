@@ -18,8 +18,9 @@ class _MyHomePageState extends State<MyHomePage> {
     fontFamily: 'Cabin Sketch Bold',
     letterSpacing: 3,
   );
+
   var myRegularTextStyle = TextStyle(
-    fontSize: 35.0,
+    fontSize: 15.0,
     fontWeight: FontWeight.bold,
     color: Colors.black,
     decoration: TextDecoration.none,
@@ -63,19 +64,20 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Center(
             child: Padding(
-          padding: const EdgeInsets.only(top: 18.0),
+          padding: const EdgeInsets.only(top: 40.0, bottom: 10.0),
           child: Text(
             "WICKTIONARY",
             style: myBoldTextStyle,
           ),
         )),
         bottom: PreferredSize(
-          preferredSize: Size.fromHeight(80.0),
+          preferredSize: Size.fromHeight(100.0),
           child: Row(
             children: <Widget>[
               Expanded(
                 child: Container(
-                  margin: const EdgeInsets.only(left: 12.0, bottom: 8.0),
+                  margin: const EdgeInsets.only(
+                      left: 12.0, bottom: 20.0, top: 22.0),
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(24.0),
@@ -89,10 +91,11 @@ class _MyHomePageState extends State<MyHomePage> {
                     },
                     controller: _controller,
                     decoration: InputDecoration(
-                      hintText: "Search for a word",
-                      contentPadding: const EdgeInsets.only(left: 24.0),
-                      border: InputBorder.none,
-                    ),
+                        hintText: "Search a word",
+                        contentPadding: const EdgeInsets.only(left: 24.0),
+                        border: InputBorder.none,
+                        hintStyle:
+                            myRegularTextStyle.copyWith(color: Colors.grey)),
                   ),
                 ),
               ),
@@ -118,50 +121,64 @@ class _MyHomePageState extends State<MyHomePage> {
               return Center(
                 child: Text(
                   "Type something in search bar 😇",
-                  style: myRegularTextStyle.copyWith(
-                    fontSize: 20.0,
-                  ),
+                  style: myRegularTextStyle.copyWith(fontSize: 20.0),
                 ),
               );
             }
+            print("Hi Error");
 
-            if (snapshot.data == "waiting") {
-              return Center(
-                child: CircularProgressIndicator(),
+            print(snapshot.data);
+
+            try {
+              if (snapshot.data[0]["message"] == "No definition :(") {
+                return Center(
+                  child: Text(
+                    "No definition found 🥺",
+                    style: myRegularTextStyle.copyWith(
+                      fontSize: 20.0,
+                    ),
+                  ),
+                );
+              }
+            } catch (e) {
+              if (snapshot.data == "waiting") {
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
+
+              return ListView.builder(
+                itemCount: snapshot.data["definitions"].length,
+                itemBuilder: (BuildContext context, int index) {
+                  return ListBody(
+                    children: <Widget>[
+                      Container(
+                        color: Colors.teal[50],
+                        child: ListTile(
+                          leading: snapshot.data["definitions"][index]
+                                      ["image_url"] ==
+                                  null
+                              ? null
+                              : CircleAvatar(
+                                  backgroundImage: NetworkImage(snapshot
+                                      .data["definitions"][index]["image_url"]),
+                                ),
+                          title: Text(_controller.text.trim() +
+                              "(" +
+                              snapshot.data["definitions"][index]["type"] +
+                              ")"),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                            snapshot.data["definitions"][index]["definition"]),
+                      )
+                    ],
+                  );
+                },
               );
             }
-
-            return ListView.builder(
-              itemCount: snapshot.data["definitions"].length,
-              itemBuilder: (BuildContext context, int index) {
-                return ListBody(
-                  children: <Widget>[
-                    Container(
-                      color: Colors.teal[50],
-                      child: ListTile(
-                        leading: snapshot.data["definitions"][index]
-                                    ["image_url"] ==
-                                null
-                            ? null
-                            : CircleAvatar(
-                                backgroundImage: NetworkImage(snapshot
-                                    .data["definitions"][index]["image_url"]),
-                              ),
-                        title: Text(_controller.text.trim() +
-                            "(" +
-                            snapshot.data["definitions"][index]["type"] +
-                            ")"),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(
-                          snapshot.data["definitions"][index]["definition"]),
-                    )
-                  ],
-                );
-              },
-            );
           },
         ),
       ),
