@@ -125,9 +125,9 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               );
             }
-            print("Hi Error");
 
-            print(snapshot.data);
+            // check the API response from the following statement
+            //print(snapshot);
 
             try {
               if (snapshot.data[0]["message"] == "No definition :(") {
@@ -176,11 +176,13 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: Text(
-                          snapshot.data["pronunciation"],
-                          style: myRegularTextStyle.copyWith(
-                              fontSize: 25.0, color: Colors.red),
-                        ),
+                        child: snapshot.data["pronunciation"] == null
+                            ? Text("")
+                            : Text(
+                                snapshot.data["pronunciation"],
+                                style: myRegularTextStyle.copyWith(
+                                    fontSize: 25.0, color: Colors.red),
+                              ),
                       ),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
