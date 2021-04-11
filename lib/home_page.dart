@@ -163,22 +163,41 @@ class _MyHomePageState extends State<MyHomePage> {
                                   backgroundImage: NetworkImage(snapshot
                                       .data["definitions"][index]["image_url"]),
                                 ),
-                          title: Text(_controller.text.trim() +
-                              "(" +
-                              snapshot.data["definitions"][index]["type"] +
-                              ")"),
+                          title: Text(
+                            _controller.text.trim() +
+                                " (" +
+                                snapshot.data["definitions"][index]["type"] +
+                                ")",
+                            style: myRegularTextStyle.copyWith(
+                              fontSize: 24.0,
+                            ),
+                          ),
                         ),
                       ),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Text(
-                            snapshot.data["definitions"][index]["definition"]),
-                      )
+                          snapshot.data["pronunciation"],
+                          style: myRegularTextStyle.copyWith(
+                              fontSize: 25.0, color: Colors.red),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          snapshot.data["definitions"][index]["definition"],
+                          style: myRegularTextStyle.copyWith(
+                              fontSize: 25.0, letterSpacing: 1),
+                        ),
+                      ),
                     ],
                   );
                 },
               );
             }
+            return SizedBox(
+              height: 0.0,
+            );
           },
         ),
       ),
