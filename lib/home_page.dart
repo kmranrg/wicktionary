@@ -64,7 +64,7 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Center(
             child: Padding(
-          padding: const EdgeInsets.only(top: 40.0, bottom: 10.0),
+          padding: const EdgeInsets.only(top: 40.0, bottom: 10.0, right: 50.0),
           child: Text(
             "WICKTIONARY",
             style: myBoldTextStyle,
