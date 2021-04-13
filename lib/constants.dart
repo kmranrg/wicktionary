@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-final myBoldTextStyle = TextStyle(
+var myBoldTextStyle = TextStyle(
   fontSize: 35.0,
   fontWeight: FontWeight.bold,
   color: Colors.white,
@@ -9,7 +9,7 @@ final myBoldTextStyle = TextStyle(
   letterSpacing: 3,
 );
 
-final myRegularTextStyle = TextStyle(
+var myRegularTextStyle = TextStyle(
   fontSize: 15.0,
   fontWeight: FontWeight.bold,
   color: Colors.black,

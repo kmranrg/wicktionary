@@ -1,6 +1,7 @@
 import 'package:avatar_glow/avatar_glow.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'constants.dart';
 import 'home_page.dart';
 
 void main() {
@@ -31,24 +32,6 @@ class IntroScreen extends StatefulWidget {
 
 class _IntroScreenState extends State<IntroScreen>
     with SingleTickerProviderStateMixin {
-  var myBoldTextStyle = TextStyle(
-    fontSize: 50.0,
-    fontWeight: FontWeight.bold,
-    color: Colors.white,
-    decoration: TextDecoration.none,
-    fontFamily: 'Cabin Sketch Bold',
-    letterSpacing: 3,
-  );
-
-  var myRegularTextStyle = TextStyle(
-    fontSize: 17.0,
-    fontWeight: FontWeight.bold,
-    color: Colors.black,
-    decoration: TextDecoration.none,
-    fontFamily: 'Cabin Sketch Regular',
-    letterSpacing: 3,
-  );
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

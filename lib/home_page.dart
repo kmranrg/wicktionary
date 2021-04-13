@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:wicktionary/widgets/developer_tab.dart';
 import 'package:wicktionary/widgets/home_tab.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -12,15 +13,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   var tabs = [
     HomeTab(),
-    Center(
-      child: Text("History"),
-    ),
-    Center(
-      child: Text("Favorites"),
-    ),
-    Center(
-      child: Text("Developer"),
-    ),
+    DeveloperTab(),
   ];
 
   @override
@@ -28,27 +21,17 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       body: tabs[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.teal,
+        selectedItemColor: Colors.white,
         currentIndex: _currentIndex,
         items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: "Home",
-            backgroundColor: Colors.teal,
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.history),
-            label: "History",
-            backgroundColor: Colors.teal,
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.favorite),
-            label: "Favorites",
-            backgroundColor: Colors.teal,
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
             label: "Developer",
-            backgroundColor: Colors.teal,
           ),
         ],
         onTap: (index) {
