@@ -1,4 +1,5 @@
 import 'package:avatar_glow/avatar_glow.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'constants.dart';
@@ -44,7 +45,9 @@ class _IntroScreenState extends State<IntroScreen>
               children: <Widget>[
                 Expanded(
                   child: Padding(
-                    padding: const EdgeInsets.only(top: 120.0),
+                    padding: kIsWeb == true
+                        ? const EdgeInsets.only(top: 50.0)
+                        : const EdgeInsets.only(top: 120.0),
                     child: Container(
                       child: Text(
                         "WICKTIONARY",
