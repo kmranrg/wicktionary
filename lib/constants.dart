@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 var myBoldTextStyle = TextStyle(
-  fontSize: 35.0,
+  fontSize: 50.0,
   fontWeight: FontWeight.bold,
   color: Colors.white,
   decoration: TextDecoration.none,

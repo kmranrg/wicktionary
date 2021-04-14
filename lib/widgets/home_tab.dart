@@ -155,14 +155,6 @@ class _HomeTabState extends State<HomeTab> {
                       Container(
                         color: Colors.teal[50],
                         child: ListTile(
-                          leading: snapshot.data["definitions"][index]
-                                      ["image_url"] ==
-                                  null
-                              ? null
-                              : CircleAvatar(
-                                  backgroundImage: NetworkImage(snapshot
-                                      .data["definitions"][index]["image_url"]),
-                                ),
                           title: Text(
                             _controller.text.trim() +
                                 " (" +
@@ -176,8 +168,23 @@ class _HomeTabState extends State<HomeTab> {
                       ),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
+                        child: snapshot.data["definitions"][index]
+                                    ["image_url"] ==
+                                null
+                            ? SizedBox(
+                                height: 0.0,
+                              )
+                            : Image.network(
+                                snapshot.data["definitions"][index]
+                                    ["image_url"],
+                              ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
                         child: snapshot.data["pronunciation"] == null
-                            ? Text("")
+                            ? SizedBox(
+                                height: 0.0,
+                              )
                             : Text(
                                 snapshot.data["pronunciation"],
                                 style: myRegularTextStyle.copyWith(

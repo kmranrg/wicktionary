@@ -88,8 +88,8 @@ class _IntroScreenState extends State<IntroScreen>
                     padding: const EdgeInsets.only(top: 80.0),
                     child: Container(
                       child: Text("DEVELOPER: KUMAR ANURAG",
-                          style:
-                              myRegularTextStyle.copyWith(color: Colors.white)),
+                          style: myRegularTextStyle.copyWith(
+                              color: Colors.white, fontSize: 18.0)),
                     ),
                   ),
                 ),
@@ -110,8 +110,8 @@ class _IntroScreenState extends State<IntroScreen>
                         child: Center(
                           child: Text(
                             'LAUNCH DICTIONARY',
-                            style:
-                                myRegularTextStyle.copyWith(color: Colors.teal),
+                            style: myRegularTextStyle.copyWith(
+                                color: Colors.teal, fontSize: 18.0),
                           ),
                         ),
                       ),
