@@ -1,5 +1,5 @@
 # Wicktionary
-<img src="https://github.com/kmranrg/wicktionary/blob/main/app_logo/app_logo.png" height="256" width="256">
+<img src="https://github.com/kmranrg/wicktionary/blob/main/app_logo/app_logo.png" height="256" width="256"> <a href="https://play.google.com/store/apps/details?id=com.kmranrg.wicktionary"><img src="https://github.com/kmranrg/wicktionary/blob/main/app_logo/google_play_store.png" width="323" height="125"></a>
 
 #### Introduction:
 
