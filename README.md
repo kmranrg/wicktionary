@@ -19,7 +19,7 @@ Wicktionary: a simple and sophisticated next-gen dictionary.
 <img src="https://github.com/kmranrg/wicktionary/blob/main/screenshots/ss5.png" width="360" height="640">
 
 ## YouTube Image Link:
-[![video](https://img.youtube.com/vi/KrvhuO_x70U/0.jpg)](https://youtu.be/KrvhuO_x70U)
+[![video](https://img.youtube.com/vi/REz05ZKhIzU/0.jpg)](https://www.youtube.com/watch?v=REz05ZKhIzU)
 
 #### Command for launching on Google Chrome:
 `flutter run -d chrome`
